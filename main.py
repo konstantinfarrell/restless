@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 
+
 dbtype = "postgresql"
 dbuser = "postgres"
 dbpass = ""
@@ -16,7 +17,6 @@ dbstring = "{dbtype}://{user}:{dbpass}@{host}/{name}".format(dbtype=dbtype,
 
 e = create_engine(dbstring)
 
-
 app = Flask(__name__)
 api = Api(app)
 
@@ -30,16 +30,16 @@ class UsersMeta(Resource):
         return result
 
 
-class UsersMetaCount(Resource):
+class UsersMetaId(Resource):
 
-    def get(self, count):
+    def get(self, id):
         conn = e.connect()
-        q = conn.execute("SELECT * FROM \"User\" LIMIT {}".format(count))
+        q = conn.execute("SELECT * FROM \"User\" WHERE id = {}".format(id))
         result = {'users': [i for i in q.cursor.fetchall()]}
         return result
 
 api.add_resource(UsersMeta, '/users')
-api.add_resource(UsersMetaCount, '/users/<int:count>')
+api.add_resource(UsersMetaId, '/users/<int:id>')
 
 if __name__ == '__main__':
     app.run()
