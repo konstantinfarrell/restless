@@ -26,7 +26,7 @@ class UsersMeta(Resource):
     def get(self):
         conn = e.connect()
         q = conn.execute("SELECT * FROM \"User\"")
-        result = {'users': [i for i in q.cursor.fetchall()]}
+        result = {'users': q.cursor.fetchall()}
         return result
 
 
@@ -35,7 +35,7 @@ class UsersMetaId(Resource):
     def get(self, id):
         conn = e.connect()
         q = conn.execute("SELECT * FROM \"User\" WHERE id = {}".format(id))
-        result = {'users': [i for i in q.cursor.fetchall()]}
+        result = {'user': i for i in q.cursor.fetchall()}
         return result
 
 api.add_resource(UsersMeta, '/users')
