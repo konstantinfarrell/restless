@@ -25,7 +25,7 @@ clean:
 
 pep8:
 	clear
-	$(VENV_DIR)/bin/flake8 main.py
+	$(VENV_DIR)/bin/flake8 restless/main.py
 
 test:
 	clear
