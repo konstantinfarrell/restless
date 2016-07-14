@@ -5,8 +5,8 @@ from sqlalchemy import create_engine
 
 dbtype = "postgresql"
 dbuser = "postgres"
-dbpass = ""
-dbhost = ""
+dbpass = "postgres"
+dbhost = "localhost"
 dbname = "restless"
 
 dbstring = "{dbtype}://{user}:{dbpass}@{host}/{name}".format(dbtype=dbtype,
@@ -14,11 +14,7 @@ dbstring = "{dbtype}://{user}:{dbpass}@{host}/{name}".format(dbtype=dbtype,
                                                              dbpass=dbpass,
                                                              host=dbhost,
                                                              name=dbname)
-
 e = create_engine(dbstring)
-
-app = Flask(__name__)
-api = Api(app)
 
 
 class UsersMeta(Resource):
@@ -37,9 +33,3 @@ class UsersMetaId(Resource):
         q = conn.execute("SELECT * FROM \"User\" WHERE id = {}".format(id))
         result = {'user': i for i in q.cursor.fetchall()}
         return result
-
-api.add_resource(UsersMeta, '/users')
-api.add_resource(UsersMetaId, '/users/<int:id>')
-
-if __name__ == '__main__':
-    app.run()
