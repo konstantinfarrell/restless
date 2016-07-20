@@ -1,11 +1,10 @@
-from flask import Flask
-from flask_restful import Resource, Api
+from flask_restful import Resource
 from sqlalchemy import create_engine
 
 
-dbtype = "postgresql"
+dbtype = "postgresql+psycopg2"
 dbuser = "postgres"
-dbpass = "postgres"
+dbpass = ""
 dbhost = "localhost"
 dbname = "restless"
 
