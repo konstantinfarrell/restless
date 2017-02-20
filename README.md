@@ -1,6 +1,6 @@
 # RESTless
 
-A super simple RESTful framework made with flask and sqlalchemy.
+A super simple RESTful API made with flask and sqlalchemy.
 
 ## Install
 
