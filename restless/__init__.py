@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from flask import make_response
 from flask_restful import Resource, reqparse
 from sqlalchemy import create_engine
@@ -37,3 +38,16 @@ class Restless(Resource):
         resp = make_response(json.dumps(data), code)
         resp.headers.extend(headers or {})
         return resp
+
+    @staticmethod
+    def merge_results(data_, results):
+        count = 0
+        data = {}
+        data.update(data_)
+        for key in data.keys():
+            data[key] = str(results[count])
+            count += 1
+        return data
+
+    def timestamp(self):
+        return str(datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'))
