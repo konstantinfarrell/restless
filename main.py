@@ -7,7 +7,7 @@ app = Flask(__name__)
 api = Api(app)
 
 api.add_resource(UsersMeta, '/users')
-api.add_resource(UsersMetaId, '/users/<int:id>')
+api.add_resource(UsersMetaId, '/users/<uuid:id>')
 
 
 if __name__ == '__main__':

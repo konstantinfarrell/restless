@@ -14,9 +14,10 @@ init:
 	clear
 	rm -rf $(VENV_DIR)
 	@$(MAKE) $(VENV_DIR)
-	dropdb --if-exists restless
-	createdb restless
-	psql restless < restless.db
+	@$(MAKE) db
+
+db:
+	mysql < restless.sql
 
 clean:
 	find . -iname "*.pyc" -delete
