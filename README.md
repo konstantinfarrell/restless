@@ -33,7 +33,7 @@ response
         ]
     }
 
-GET     /users/< uuid > - Gets a user
+GET     /users/\<uuid> - Gets a user
 
 response
 
