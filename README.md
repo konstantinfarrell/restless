@@ -75,7 +75,7 @@ response
         }
     }
 
-PATCH /users/<uuid>
+PATCH /users/\<uuid>
 
 data
 
@@ -101,7 +101,7 @@ response
         }
     }
 
-DELETE /users/<uuid>
+DELETE /users/\<uuid>
 
 response
 
