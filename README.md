@@ -10,7 +10,7 @@ A super simple RESTful API made with flask and sqlalchemy.
 
     make
 
-## API
+# API
 
 GET     /users - Gets all users
 
