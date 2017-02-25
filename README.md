@@ -1,6 +1,10 @@
 # RESTless
 
 A super simple RESTful API made with flask and sqlalchemy.
+It's not fast. It's not async. It's really not special.
+
+Unless you're turning this in as your programming project.
+Then it's fully async and actually written in Java.
 
 ## Install
 
