@@ -3,26 +3,14 @@ from datetime import datetime
 from flask import make_response
 from flask_restful import Resource, reqparse
 from sqlalchemy import create_engine
+from restless.settings import engine
 
-
-dbtype = "mysql+pymysql"
-dbuser = "root"
-dbpass = ""
-dbhost = "localhost"
-dbname = "restless"
-
-dbstring = "{dbtype}://{user}:{dbpass}@{host}/{name}".format(dbtype=dbtype,
-                                                             user=dbuser,
-                                                             dbpass=dbpass,
-                                                             host=dbhost,
-                                                             name=dbname)
-e = create_engine(dbstring)
 
 
 class Restless(Resource):
     def __init__(self, *args, **kwargs):
         self.parser = reqparse.RequestParser()
-        self.conn = e.connect()
+        self.conn = engine.connect()
         super(Restless, self).__init__(*args, **kwargs)
 
     def body(self, args):

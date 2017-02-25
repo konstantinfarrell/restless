@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_restful import Api
-from restless.main import UsersMeta, UsersMetaId
+from restless.users import UsersMeta, UsersMetaId
+from restless.settings import Base, engine
 
+
+Base.metadata.create_all(engine)
 
 app = Flask(__name__)
 api = Api(app)
