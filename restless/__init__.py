@@ -27,15 +27,5 @@ class Restless(Resource):
         resp.headers.extend(headers or {})
         return resp
 
-    @staticmethod
-    def merge_results(data_, results):
-        count = 0
-        data = {}
-        data.update(data_)
-        for key in data.keys():
-            data[key] = str(results[count])
-            count += 1
-        return data
-
     def timestamp(self):
         return str(datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'))
